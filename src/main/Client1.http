@@ -1,0 +1,23 @@
+### GET request to example server
+GET http://localhost:8080/api/investors/1
+
+### GET request to example server
+GET http://localhost:8080/api/v1/sa/investors
+
+### POST request to example server
+POST http://localhost:8080/api/investors
+Content-Type: application/json
+
+{
+    "cardNo": "123456789012343",
+    "firstname": "Nikola",
+    "lastname": "Tesla",
+    "email": "nikola@mail.com",
+    "phone": "1234567890",
+    "createdAt": "2024-12-05T00:00:00.000Z"
+}
+
+### DELETE request to example server
+DELETE http://localhost:8080/api/investors/0
+
+###
