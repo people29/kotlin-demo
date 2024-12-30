@@ -8,15 +8,15 @@ import javax.sql.DataSource
 
 @Configuration
 class DataSourceConfig {
-    @Bean
-    @ConfigurationProperties("spring.datasource.bblam")
-    fun bblamDataSource(): DataSource {
-        return DataSourceBuilder.create().build()
-    }
-
-    @Bean
-    @ConfigurationProperties("spring.datasource.scbam")
-    fun scbam2DataSource(): DataSource {
-        return DataSourceBuilder.create().build()
-    }
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.bblam")
+//    fun bblamDataSource(): DataSource {
+//        return DataSourceBuilder.create().build()
+//    }
+//
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.scbam")
+//    fun scbam2DataSource(): DataSource {
+//        return DataSourceBuilder.create().build()
+//    }
 }
