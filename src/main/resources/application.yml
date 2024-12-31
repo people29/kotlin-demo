@@ -16,6 +16,6 @@ spring:
       ddl-auto: update   # Automatically create/update schema (optional)
     properties:
       hibernate:
-        default_schema: public # Default schema for Hibernate
+        default_schema: bblam # public # Default schema for Hibernate
         format_sql: true # Format SQL queries
       show-sql: true # Show SQL queries in console
