@@ -18,6 +18,8 @@ class BalanceController {
     fun getByCode(@PathVariable code: String): List<Balance>? {
         if (code == "BBLAM") {
             return balanceService.getBBLAMBalance().map { balance ->
+                // !! is used to tell the compiler that the value is not null. if it is null, it will throw an exception.
+                // !! is risky: prefer to use ?. or ?: to handle null values.
                 Balance(
                     id = balance.id!!,
                     unitholderNo = balance.unitholderNo!!,
@@ -45,6 +47,6 @@ class BalanceController {
                 )
             }
         }
-        return null
+        return emptyList();
     }
 }
