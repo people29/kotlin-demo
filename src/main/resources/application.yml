@@ -1,21 +1,25 @@
+#spring:
+#  application:
+#    name: demo
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    username: postgres
+#    password: password
+#    driver-class-name: org.postgresql.Driver
+#    hikari:
+#      maximum-pool-size: 10
+#      minimum-idle: 2
+#      idle-timeout: 30000
+#      connection-timeout: 30000
+#  jpa:
+#    hibernate:
+#      ddl-auto: update   # Automatically create/update schema (optional)
+#    properties:
+#      hibernate:
+#        default_schema: bblam # public # Default schema for Hibernate
+#        format_sql: true # Format SQL queries
+#      show-sql: true # Show SQL queries in console
+
 spring:
-  application:
-    name: demo
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: password
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 2
-      idle-timeout: 30000
-      connection-timeout: 30000
-  jpa:
-    hibernate:
-      ddl-auto: update   # Automatically create/update schema (optional)
-    properties:
-      hibernate:
-        default_schema: bblam # public # Default schema for Hibernate
-        format_sql: true # Format SQL queries
-      show-sql: true # Show SQL queries in console
+  profiles:
+    active: demo
