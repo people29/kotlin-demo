@@ -10,3 +10,7 @@ fun String.toSlug(): String {
         .joinToString("-")
         .replace("-+".toRegex(), "-")
 }
+
+fun String.camelCaseToWords(): String {
+    return this.replace(Regex("([a-z])([A-Z])"), "$1 $2").lowercase()
+}

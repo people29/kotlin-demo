@@ -5,3 +5,8 @@ class Sample {
         return a + b
     }
 }
+
+fun main() {
+    val totalRecord = "totalRecord"
+    println(totalRecord.camelCaseToWords())
+}

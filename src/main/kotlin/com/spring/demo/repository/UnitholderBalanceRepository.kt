@@ -2,16 +2,16 @@ package com.spring.demo.repository
 
 import com.spring.demo.entity.BalanceEntity
 import jakarta.transaction.Transactional
-import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
+import org.springframework.data.repository.CrudRepository
+import org.springframework.stereotype.Repository
 
-interface BalanceRepository : JpaRepository<BalanceEntity, Long> {
-    fun findByUnitholderNo(unitholderNo: String): List<BalanceEntity>
-
+@Repository
+class UnitholderBalanceRepository {
     @Transactional
     @Modifying
-    @Query("""INSERT INTO unitholder_balance_tax_mf_report (
+    @Query("""INSERT INTO unitholder_balance_tax_mf_report ()
                 tax_id, 
                 sa_code, 
                 unitholder_id, 
@@ -44,5 +44,6 @@ interface BalanceRepository : JpaRepository<BalanceEntity, Long> {
                allow_redeem_unit,
                as_of_date 
         FROM unitholder_balance_tax_mf """, nativeQuery = true)
-    fun save()
+    fun save() {
+    }
 }

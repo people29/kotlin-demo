@@ -11,4 +11,5 @@ class BalanceService(
 ) {
     fun getAllBalances(): List<BalanceEntity> = balanceRepository.findAll()
     fun getBalanceByUnitholderNo(unitholderNo: String) = balanceRepository.findByUnitholderNo(unitholderNo)
+    fun save() = balanceRepository.save()
 }

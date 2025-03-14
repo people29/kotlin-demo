@@ -59,6 +59,31 @@ fun insert() {
     }
 }
 
+fun get() {
+    val url = "jdbc:mysql://localhost:3306/mydb"
+    val username = "root"
+    val password = "password"
+
+    try {
+        val connection: Connection = DriverManager.getConnection(url, username, password)
+        val statement = connection.createStatement()
+
+        val sql = "SELECT * FROM amc"
+
+        val resultSet = statement.executeQuery(sql)
+        while (resultSet.next()) {
+            println(resultSet.getString("code"))
+        }
+
+
+        statement.close()
+        connection.close()
+    } catch (e: Exception) {
+        println(e)
+        e.printStackTrace()
+    }
+}
+
 fun main() {
-    insert()
+    get()
 }

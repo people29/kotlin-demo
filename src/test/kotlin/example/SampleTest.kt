@@ -1,5 +1,6 @@
 package example
 
+import com.spring.demo.model.FileType
 import org.junit.jupiter.api.Assertions.*
 import kotlin.test.Test
 
@@ -11,5 +12,7 @@ class SampleTest {
     fun sum() {
         val sample = Sample()
         assertEquals(5, sample.sum(2, 3))
+
+        println(FileType.TAX_BALANCE.value)
     }
 }
