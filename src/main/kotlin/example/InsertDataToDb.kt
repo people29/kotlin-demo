@@ -7,24 +7,32 @@ import java.time.LocalDateTime
 import kotlin.random.Random
 
 // Database Configuration
-//const val DB_URL =  "jdbc:mysql://10.22.65.188/amc-service-10008"
+//const val DB_URL =  "jdbc:mysql://10.22.65.188/amc-service-10134"
 //const val DB_USER = "funddbusr"
 //const val DB_PASSWORD = "Sh@zamb9"
 
-const val DB_URL = "jdbc:mysql://localhost:3306/mydb"
-const val DB_USER = "root"
-const val DB_PASSWORD = "password"
+//const val DB_URL = "jdbc:mysql://localhost:3306/mydb"
+//const val DB_USER = "root"
+//const val DB_PASSWORD = "password"
+
+const val DB_URL =  "jdbc:mysql://10.22.65.215:6033/taxdb_amc_10134"
+const val DB_USER = "taxsupportusr"
+const val DB_PASSWORD = "Sh@zamb9"
+
 
 // Function to generate random data lazily using Sequence
 fun generateUnitholderData(): Sequence<List<Any>> = sequence {
     val asOfDate = java.sql.Date.valueOf("2025-03-14")
-    for (i in 1..1_500_000) {
+    for (i in 1..1_500) {
         yield(
             listOf(
                 randomTaxId(),
                 randomSaCode(),
                 randomUnitholderId(),
                 fundCode(),
+                "ชื่อกองทุนภาษาไทย",
+                "Fund Name in English",
+                "LTF",
                 10_000.0081, // unit_balance
                 22_999.88, // amount_balance
                 999990.99, // cost_amount
@@ -36,6 +44,7 @@ fun generateUnitholderData(): Sequence<List<Any>> = sequence {
                 0.0, // cost_amount_af
                 1000.00, // allow_redeem_unit
                 asOfDate, // as_of_date
+                "ABERDEEN"
             )
         )
     }
@@ -47,10 +56,11 @@ fun insertUnitholderData() {
     connection.autoCommit = false
 
     val sql = """
-        INSERT INTO unitholder_balance_tax_mf (tax_id, sa_code, unitholder_id, fund_code, unit_balance, 
-            amount_balance, cost_amount, nav, nav_date, unit_balance_bf, unit_balance_af, 
-            cost_amount_bf, cost_amount_af, allow_redeem_unit, as_of_date) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO unitholder_balance_tax_mf_report (tax_id, sa_code, unitholder_id, 
+            fund_code, fund_thai_name, fund_eng_name, fund_tax_type, unit_balance, amount_balance, 
+            cost_amount, nav, nav_date, unit_balance_bf, unit_balance_af, 
+            cost_amount_bf, cost_amount_af, allow_redeem_unit, as_of_date, amc_code) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """.trimIndent()
 
     val preparedStatement: PreparedStatement = connection.prepareStatement(sql)

@@ -13,11 +13,14 @@ import java.time.LocalDateTime
 class BalanceController(
     private val balanceService: BalanceService,
 ) {
-
-
     @GetMapping("/")
     fun getAllBalances(): List<Any>? {
         return balanceService.getAllBalances()
+    }
+
+    @GetMapping("/get")
+    fun getBalance2(): List<Any>? {
+        return balanceService.getBalance()
     }
 
     @GetMapping("/insert")
